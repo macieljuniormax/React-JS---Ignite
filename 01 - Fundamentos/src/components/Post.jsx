@@ -2,7 +2,7 @@ import styles from './Post.module.css'
 
 export function Post() {
   return (
-    <article className={styles.Post}>
+    <article className={styles.post}>
       <header>
         <div className={styles.author}>
           <img
@@ -29,7 +29,9 @@ export function Post() {
           👉 <a href="">jane.design/doctorcare </a>
         </p>
         <p>
-          <a href="">#novoprojeto #nlw #rocketseat</a>
+          <a href="">#novoprojeto </a>
+          <a href="">#nlw </a>
+          <a href="">#rocketseat </a>
         </p>
       </div>
     </article>
