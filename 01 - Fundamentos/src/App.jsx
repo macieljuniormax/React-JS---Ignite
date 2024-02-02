@@ -1,6 +1,6 @@
-import { Post } from './Post'
-import { Header } from './components/header/Header'
-import { Sidebar } from './components/sidebar/Sidebar'
+import { Header } from './components/Header'
+import { Sidebar } from './components/Sidebar'
+import { Post } from './components/Post'
 
 import './global.css'
 import styles from './App.module.css'
@@ -13,6 +13,7 @@ export function App() {
       <div className={styles.wrapper}>
         <Sidebar></Sidebar>
         <main>
+          <Post></Post>
           <Post
             author="Maciel Ferreira"
             content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae nisi minima beatae adipisci! Dignissimos tempore 
