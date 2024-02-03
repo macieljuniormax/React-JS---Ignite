@@ -113,11 +113,15 @@
   background: var(--green-500);
   color: var(--white);
   font-weight: 700;
+  cursor: pointer;
 
   transition: background-color 0.1s;
 }
 
 .componentForm button[type=submit]:hover {
   background: var(--green-300);
-  cursor: pointer;
+}
+
+.commentList {
+  margin-top: 2rem;
 }
