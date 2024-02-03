@@ -10,15 +10,18 @@ export function Post() {
             src="https://github.com/macieljuniormax.png"
             alt="Profile Image"
           />
+
           <div className={styles.authorInfo}>
             <strong>Maciel Junior</strong>
             <span>Web Developer</span>
           </div>
         </div>
+
         <time title="01 de Fevereiro de 2024" dateTime="2024-02-01 21:06:00">
           Publicado há 1h
         </time>
       </header>
+
       <div className={styles.content}>
         <p>Fala galeraa 👋 </p>
         <p>
@@ -34,6 +37,16 @@ export function Post() {
           <a href="">#rocketseat </a>
         </p>
       </div>
+
+      <form className={styles.componentForm}>
+        <strong>Deixe seu feedback</strong>
+
+        <textarea placeholder="Deixe um comentário"></textarea>
+
+        <footer>
+          <button type="submit">Publicar</button>
+        </footer>
+      </form>
     </article>
   )
 }
