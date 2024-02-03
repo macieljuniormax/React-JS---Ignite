@@ -2,20 +2,16 @@ import { ThumbsUp, Trash } from '@phosphor-icons/react'
 import styles from './Comment.module.css'
 import { Avatar } from './Avatar'
 
-export function Comment() {
+export function Comment({ src }) {
   return (
     <div className={styles.comment}>
-      <Avatar
-        hasBorder={false}
-        className={styles.avatar}
-        src="https://github.com/macieljuniormax.png"
-      />
+      <Avatar hasBorder={false} className={styles.avatar} src={src} />
 
       <div className={styles.commentBox}>
         <div className={styles.commentContent}>
           <header>
             <div className={styles.authorAndTime}>
-              <strong>Maciel Júnior</strong>
+              <strong>Diego Fernandes</strong>
               <time
                 title="01 de Fevereiro de 2024"
                 dateTime="2024-02-01 21:06:00"

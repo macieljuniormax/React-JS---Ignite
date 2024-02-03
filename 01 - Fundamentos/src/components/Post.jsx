@@ -47,9 +47,9 @@ export function Post() {
       </form>
 
       <div className={styles.commentList}>
-        <Comment />
-        <Comment />
-        <Comment />
+        <Comment src="https://github.com/diego3g.png" />
+        <Comment src="https://github.com/macieljuniormax.png" />
+        <Comment src="https://github.com/diego3g.png" />
       </div>
     </article>
   )
