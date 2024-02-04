@@ -9,7 +9,7 @@ const posts = [
   {
     id: 1,
     author: {
-      avatarUrl: 'https://github.com.br/macieljuniormax.png',
+      avatarUrl: 'https://github.com/macieljuniormax.png',
       name: 'Maciel Custódio',
       role: 'Web Developer',
     },
@@ -36,13 +36,13 @@ const posts = [
         content: '#rocketseat',
       },
     ],
-    publishedAt: new Date('2024-02-03 29:47 20:00:00'),
+    publishedAt: new Date('2024-02-01T19:10:56'),
   },
 
   {
     id: 2,
     author: {
-      avatarUrl: 'https://github.com.br/diego3g.png',
+      avatarUrl: 'https://github.com/diego3g.png',
       name: 'Diego Fernandes',
       role: 'CTO Rocketseat',
     },
@@ -57,6 +57,10 @@ const posts = [
           'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀',
       },
       {
+        type: 'link',
+        content: '👉 jane.design/doctorcare',
+      },
+      {
         type: '#link',
         content: '#novoprojeto',
       },
@@ -69,7 +73,7 @@ const posts = [
         content: '#rocketseat',
       },
     ],
-    publishedAt: new Date('2024-02-01 29:47 19:10:56'),
+    publishedAt: new Date('2024-02-03T09:00:23'),
   },
 ]
 
