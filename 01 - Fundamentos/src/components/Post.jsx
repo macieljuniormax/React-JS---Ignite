@@ -44,6 +44,9 @@ export function Post({ author, content, publishedAt }) {
     setComments(commentsWithoutDeletedOne)
   }
 
+  const isNewCommentEmpty =
+    newCommentText.length < 5 || newCommentText.length > 160
+
   return (
     <article className={styles.post}>
       <header>
@@ -91,10 +94,14 @@ export function Post({ author, content, publishedAt }) {
           onChange={handleNewCommentChange}
           onInvalid={handleNewCommentInvalid}
           required
+          minLength="5"
+          maxLength="160"
         ></textarea>
 
         <footer>
-          <button type="submit">Publicar</button>
+          <button type="submit" disabled={isNewCommentEmpty}>
+            Publicar
+          </button>
         </footer>
       </form>
 
