@@ -8,6 +8,7 @@ import ptBR from 'date-fns/locale/pt-BR'
 
 export function Post({ author, content, publishedAt }) {
   const [comments, setComments] = useState(['Post muito bacana, hein!?'])
+  const [newCommentText, setNewCommentText] = useState('')
   const publishedDateFormatted = format(
     publishedAt,
     "dd 'de' LLLL 'de' yyyy 'às' HH:mm'h'",
@@ -21,8 +22,13 @@ export function Post({ author, content, publishedAt }) {
 
   function handleCreateNewComment(event) {
     event.preventDefault()
-    setComments([...comments, comments.length + 1])
-    console.log(comments)
+
+    setComments([...comments, newCommentText])
+    setNewCommentText('')
+  }
+
+  function handleNewCommentChange(event) {
+    setNewCommentText(event.target.value)
   }
 
   return (
@@ -65,7 +71,12 @@ export function Post({ author, content, publishedAt }) {
       <form onSubmit={handleCreateNewComment} className={styles.componentForm}>
         <strong>Deixe seu feedback</strong>
 
-        <textarea placeholder="Deixe um comentário"></textarea>
+        <textarea
+          name="comment"
+          placeholder="Deixe um comentário"
+          value={newCommentText}
+          onChange={handleNewCommentChange}
+        ></textarea>
 
         <footer>
           <button type="submit">Publicar</button>
@@ -76,14 +87,10 @@ export function Post({ author, content, publishedAt }) {
         {comments.map((comment, index) => {
           return (
             <div key={index}>
-              <Comment />
+              <Comment content={comment} />
             </div>
           )
         })}
-
-        {/* <Comment src="https://github.com/diego3g.png" />
-        <Comment src="https://github.com/macieljuniormax.png" />
-        <Comment src="https://github.com/diego3g.png" /> */}
       </div>
     </article>
   )
