@@ -9,6 +9,7 @@ import ptBR from 'date-fns/locale/pt-BR'
 export function Post({ author, content, publishedAt }) {
   const [comments, setComments] = useState(['Post muito bacana, hein!?'])
   const [newCommentText, setNewCommentText] = useState('')
+
   const publishedDateFormatted = format(
     publishedAt,
     "dd 'de' LLLL 'de' yyyy 'às' HH:mm'h'",
