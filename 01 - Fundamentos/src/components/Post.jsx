@@ -1,12 +1,13 @@
-import { Paragraph } from '@phosphor-icons/react'
 import { Avatar } from './Avatar'
 import { Comment } from './Comment'
+import { useState } from 'react'
 import styles from './Post.module.css'
 
 import { format, formatDistanceToNow } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 
 export function Post({ author, content, publishedAt }) {
+  const [comments, setComments] = useState(['Post muito bacana, hein!?'])
   const publishedDateFormatted = format(
     publishedAt,
     "dd 'de' LLLL 'de' yyyy 'às' HH:mm'h'",
@@ -17,6 +18,12 @@ export function Post({ author, content, publishedAt }) {
     locale: ptBR,
     addSuffix: true,
   })
+
+  function handleCreateNewComment(event) {
+    event.preventDefault()
+    setComments([...comments, comments.length + 1])
+    console.log(comments)
+  }
 
   return (
     <article className={styles.post}>
@@ -55,7 +62,7 @@ export function Post({ author, content, publishedAt }) {
         })}
       </div>
 
-      <form className={styles.componentForm}>
+      <form onSubmit={handleCreateNewComment} className={styles.componentForm}>
         <strong>Deixe seu feedback</strong>
 
         <textarea placeholder="Deixe um comentário"></textarea>
@@ -66,9 +73,17 @@ export function Post({ author, content, publishedAt }) {
       </form>
 
       <div className={styles.commentList}>
-        <Comment src="https://github.com/diego3g.png" />
+        {comments.map((comment, index) => {
+          return (
+            <div key={index}>
+              <Comment />
+            </div>
+          )
+        })}
+
+        {/* <Comment src="https://github.com/diego3g.png" />
         <Comment src="https://github.com/macieljuniormax.png" />
-        <Comment src="https://github.com/diego3g.png" />
+        <Comment src="https://github.com/diego3g.png" /> */}
       </div>
     </article>
   )
