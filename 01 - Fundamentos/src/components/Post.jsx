@@ -28,7 +28,20 @@ export function Post({ author, content, publishedAt }) {
   }
 
   function handleNewCommentChange(event) {
+    event.target.setCustomValidity('')
     setNewCommentText(event.target.value)
+  }
+
+  function handleNewCommentInvalid(event) {
+    event.target.setCustomValidity('Esse campo é Obrigatório!!!')
+  }
+
+  function deleteComment(commentToDelet) {
+    const commentsWithoutDeletedOne = comments.filter((comment) => {
+      return comment !== commentToDelet
+    })
+
+    setComments(commentsWithoutDeletedOne)
   }
 
   return (
@@ -76,6 +89,8 @@ export function Post({ author, content, publishedAt }) {
           placeholder="Deixe um comentário"
           value={newCommentText}
           onChange={handleNewCommentChange}
+          onInvalid={handleNewCommentInvalid}
+          required
         ></textarea>
 
         <footer>
@@ -86,9 +101,11 @@ export function Post({ author, content, publishedAt }) {
       <div className={styles.commentList}>
         {comments.map((comment) => {
           return (
-            <div key={comment}>
-              <Comment content={comment} />
-            </div>
+            <Comment
+              key={comment}
+              content={comment}
+              onDeleteComment={deleteComment}
+            />
           )
         })}
       </div>
