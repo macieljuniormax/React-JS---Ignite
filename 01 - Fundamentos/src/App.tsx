@@ -15,11 +15,11 @@ const posts = [
     },
     content: [
       {
-        type: 'parahraph',
+        type: 'paragraph',
         content: 'Fala galeraa 👋',
       },
       {
-        type: 'parahraph',
+        type: 'paragraph',
         content:
           'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀',
       },
@@ -48,11 +48,11 @@ const posts = [
     },
     content: [
       {
-        type: 'parahraph',
+        type: 'paragraph',
         content: 'Fala galeraa 👋',
       },
       {
-        type: 'parahraph',
+        type: 'paragraph',
         content:
           'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀',
       },
@@ -94,7 +94,7 @@ export function App() {
                 publishedAt={post.publishedAt}
               />
             )
-          })}
+          })}s
         </main>
       </div>
     </div>

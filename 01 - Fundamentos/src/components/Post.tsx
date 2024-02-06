@@ -1,19 +1,36 @@
 import { Avatar } from './Avatar'
 import { Comment } from './Comment'
-import { useState } from 'react'
+import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react'
 import styles from './Post.module.css'
 
 import { format, formatDistanceToNow } from 'date-fns'
-import ptBR from 'date-fns/locale/pt-BR'
+import { ptBR } from 'date-fns/locale/pt-BR'
 
-export function Post({ author, content, publishedAt }) {
+interface Author {
+  name: string,
+  role: string,
+  avatarUrl: string,
+}
+
+interface Content {
+  type: 'paragraph' | 'link' | '#link',
+  content: string,
+}
+
+interface PostProps {
+  author: Author,
+  publishedAt: Date,
+  content: Content[],
+}
+
+export function Post({ author, content, publishedAt }: PostProps) {
   const [comments, setComments] = useState(['Post muito bacana, hein!?'])
   const [newCommentText, setNewCommentText] = useState('')
 
   const publishedDateFormatted = format(
     publishedAt,
     "dd 'de' LLLL 'de' yyyy 'às' HH:mm'h'",
-    { locale: ptBR },
+    { locale: ptBR }
   )
 
   const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
@@ -21,23 +38,23 @@ export function Post({ author, content, publishedAt }) {
     addSuffix: true,
   })
 
-  function handleCreateNewComment(event) {
+  function handleCreateNewComment(event: FormEvent) {
     event.preventDefault()
 
     setComments([...comments, newCommentText])
     setNewCommentText('')
   }
 
-  function handleNewCommentChange(event) {
+  function handleNewCommentChange(event: ChangeEvent<HTMLTextAreaElement>) {
     event.target.setCustomValidity('')
     setNewCommentText(event.target.value)
   }
 
-  function handleNewCommentInvalid(event) {
+  function handleNewCommentInvalid(event: InvalidEvent<HTMLTextAreaElement>) {
     event.target.setCustomValidity('Esse campo é Obrigatório!!!')
   }
 
-  function deleteComment(commentToDelet) {
+  function deleteComment(commentToDelet: string) {
     const commentsWithoutDeletedOne = comments.filter((comment) => {
       return comment !== commentToDelet
     })
@@ -60,7 +77,7 @@ export function Post({ author, content, publishedAt }) {
           </div>
         </div>
 
-        <time title={publishedDateFormatted} dateTime={publishedAt}>
+        <time title={publishedDateFormatted} dateTime={publishedAt.toISOString()}>
           {publishedDateRelativeToNow}
         </time>
       </header>
@@ -95,8 +112,8 @@ export function Post({ author, content, publishedAt }) {
           onChange={handleNewCommentChange}
           onInvalid={handleNewCommentInvalid}
           required
-          minLength="5"
-          maxLength="160"
+          minLength={5}
+          maxLength={160}
         ></textarea>
 
         <footer>
