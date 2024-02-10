@@ -8,7 +8,9 @@ function App() {
     <div>
       <Header />
       <main className={styles.wraper}>
+        <section className={styles.taskCreator}>
           <Input />
+        </section>
       </main>
     </div>
   )
