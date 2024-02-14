@@ -12,9 +12,10 @@
   font-weight: 700;
   border-radius: 8px;
   position: relative;
-  transform: translateY(-50%);
   cursor: pointer;
-  /* transition: background-color 0.1s; */
+  transform: translateY(-50%);
+  margin-bottom: 2.375rem;
+  transition: background-color 0.1s;
 }
 
 .createButton:hover {
